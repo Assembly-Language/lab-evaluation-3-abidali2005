@@ -1,14 +1,11 @@
 
 #include <stdio.h>
 
-
-//extern "C" void __stdcall asmfunc(void);
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void __stdcall asmfunc(int p1 ,int p2);
+int __stdcall countPositives(int arr[], int size);
 
 #ifdef __cplusplus
 }
@@ -16,18 +13,14 @@ void __stdcall asmfunc(int p1 ,int p2);
 
 
 int main() {
-    system("cls");
-    int abc;
-    printf("assembly proc calling from  from C! \n");
-getch();
+    int arr[] = {1, -3, 5, -7, 9, -11, 13};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    
-    asmfunc(3,5); //assembly proc calling
-   
-   getch();
-    
-    
-    printf("back to  C! \n"); // printing in c
+    // Call assembly function
+    int result = countPositives(arr, size);
+
+    // Display result
+    printf("Total number of positive numbers: %d\n", result);
     
   
     

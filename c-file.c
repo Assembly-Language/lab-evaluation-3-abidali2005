@@ -1,28 +1,21 @@
-
 #include <stdio.h>
+#include <conio.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-int __stdcall countPositives(int arr[], int size);
+int __stdcall CountPositive(short* array, int size);
 
 #ifdef __cplusplus
 }
 #endif
 
-
 int main() {
-    int arr[] = {1, -3, 5, -7, 9, -11, 13};
-    int size = sizeof(arr) / sizeof(arr[0]);
-
-    // Call assembly function
-    int result = countPositives(arr, size);
-
-    // Display result
-    printf("Total number of positive numbers: %d\n", result);
-    
-  
-    
+    short array[] = {3, -6, -1, -10};
+    int size = sizeof(array) / sizeof(array[0]);
+    int count = CountPositive(array, size);
+    printf("Total positive numbers: %d\n", count);
+    getch();
     return 0;
 }

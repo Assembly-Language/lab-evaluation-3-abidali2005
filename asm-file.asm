@@ -1,41 +1,34 @@
-
-
 INCLUDE Irvine32.inc
-.data
-;public asmfunc
-msg db "assebly procedure end now",0
 
+.data
+msg db "Total positive numbers: ", 0
 
 .code
-countPositives PROC arr:PTR DWORD, size:DWORD
-    
-    push ebp
-    mov ebp, esp
-    xor ecx, ecx          
-    xor ebx, ebx            
-    
-    mov esi, arr         
-    mov edx, size         
+CountPositive PROC arrayPtr: DWORD, arrSize: DWORD
+    push esi
+    push ecx
+    push eax
 
-check_loop:
-    cmp ebx, edx           
-    jge end_loop            
+    mov esi, arrayPtr
+    mov ecx, arrSize
+    xor eax, eax
 
-    mov eax, [esi + ebx*4]
-    cmp eax, 0              
-    jle skip_increment      
+next:
+    movsx edx, WORD PTR [esi]
+    cmp edx, 0
+    jle skip
+    inc eax
 
-    inc ecx                
+skip:
+    add esi, 2
+    loop next
 
-skip_increment:
-    inc ebx                 
-    jmp check_loop        
+    pop edx
+    pop ecx
+    pop esi
 
-end_loop:
-    mov eax, ecx           
-    pop ebp
     ret
-countPositives ENDP
-END
+CountPositive ENDP
 
+END
 

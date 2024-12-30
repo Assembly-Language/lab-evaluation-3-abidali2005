@@ -12,7 +12,7 @@ int __stdcall CountPositive(short* array, int size);
 #endif
 
 int main() {
-    short array[] = {3, -6, -1, -10};
+    short array[] = {3, -6, -1, -10, 10, 30, 40, 4};
     int size = sizeof(array) / sizeof(array[0]);
     int count = CountPositive(array, size);
     printf("Total positive numbers: %d\n", count);
